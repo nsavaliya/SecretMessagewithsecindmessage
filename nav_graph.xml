@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <!-- Welcome Fragment-->
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.mdev.secretmessage.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_messageFragment"
+            app:destination="@id/messageFragment" />
+    </fragment>
+
+    <!-- Message Fragment-->
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="com.mdev.secretmessage.MessageFragment"
+        android:label="fragment_message"
+        tools:layout="@layout/fragment_message" >
+        <action
+            android:id="@+id/action_messageFragment_to_encryptFragment"
+            app:destination="@id/encryptFragment"
+            app:popUpTo="@id/welcomeFragment" />
+    </fragment>
+
+    <!-- Encrypt Fragment-->
+    <fragment
+        android:id="@+id/encryptFragment"
+        android:name="com.mdev.secretmessage.EncryptFragment"
+        android:label="fragment_encrypt"
+        tools:layout="@layout/fragment_encrypt" >
+        <argument
+            android:name="message"
+            app:argType="string" />
+        <argument
+            android:name="secondMessage"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_encryptFragment_to_secondEncryptFragment"
+            app:destination="@id/secondEncryptFragment" />
+    </fragment>
+
+    <!-- 2nd Encrypt Fragment-->
+    <fragment
+        android:id="@+id/secondEncryptFragment"
+        android:name="com.mdev.secretmessage.SecondEncryptFragment"
+        android:label="fragment_second_encrypt"
+        tools:layout="@layout/fragment_second_encrypt" >
+        <argument
+            android:name="secondMessage"
+            app:argType="string" />
+    </fragment>
+
+</navigation>
